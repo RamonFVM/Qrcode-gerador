@@ -10,7 +10,7 @@ export function HomePage() {
             />
             
             <button
-             className="bg-emerald-500 text-white w-72 p-4 rounded-2xl hover:bg-emerald-700 text-lg hover:transition-all hover:ease-out hover:duration-500 hover:scale-110"
+             className="bg-emerald-500 text-white w-72 p-4 rounded-2xl hover:bg-emerald-800 text-lg hover:transition-all hover:ease-out hover:duration-500 hover:scale-110"
                 type="submit"
             >
                 Gerar Qrcode
