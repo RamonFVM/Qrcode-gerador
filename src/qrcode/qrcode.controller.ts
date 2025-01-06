@@ -1,4 +1,4 @@
-import { Controller, Post } from '@nestjs/common';
+import { Controller, Post, Query } from '@nestjs/common';
 import { QrcodeService } from './qrcode.service';
 
 @Controller('qrcode')
@@ -6,9 +6,16 @@ export class QrcodeController {
 
     constructor( private qrcodeService:QrcodeService){}
 
-    @Post()
-    GeneratorQrcode(){
+    @Post('generater')
+    async GeneratorQrcode(@Query('data') data:string){
+        if(!data){
+            throw new Error('Requer um parametro')
+        }else{
+            
+            return this.qrcodeService.Generatorqr(data)
 
-        return this.qrcodeService.Generatorqr()
+        }
+
+        
     }
 }

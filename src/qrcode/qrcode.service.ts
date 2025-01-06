@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class QrcodeService {
 
-    Generatorqr(){
+    Generatorqr(data:string){
 
       
     }
