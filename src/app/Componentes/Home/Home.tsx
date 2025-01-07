@@ -1,4 +1,8 @@
+'use client'
+import { useState } from "react";
+
 export function HomePage() {
+    const [url,seturl]=useState<string>("")
     return (
         <div className="flex flex-col justify-center items-center text-center m-8">
             <h1 className="font-medium m-4 text-5xl mb-4">Gerador de Qrcode</h1>
@@ -14,6 +18,7 @@ export function HomePage() {
                 type="submit"
             >
                 Gerar Qrcode
+                
             </button>
         </div>
     );
