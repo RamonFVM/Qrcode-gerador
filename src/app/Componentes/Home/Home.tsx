@@ -1,8 +1,38 @@
+import axios from "axios";
 'use client'
 import { useState } from "react";
 
+
+
 export function HomePage() {
     const [url,seturl]=useState<string>("")
+    const [value,setValue]=useState<string>("")
+
+    const Geradorqrcode=async()=>{
+
+        try {
+
+            if(value){
+
+                const Qrcodedata= await axios.get(`http://localhost:4000/qrcode/generater?data=${value}`)
+
+                if(Qrcodedata.data){
+
+                    setValue(Qrcodedata.data)
+
+                }
+               
+
+            }
+            
+        } catch (error) {
+
+            console.error("Error ao gerar o qrcode", error)
+            
+        }
+
+
+    }
     return (
         <div className="flex flex-col justify-center items-center text-center m-8">
             <h1 className="font-medium m-4 text-5xl mb-4">Gerador de Qrcode</h1>
@@ -11,6 +41,8 @@ export function HomePage() {
                 className="border min-w-96 rounded-xl m-6 p-4 placeholder-gray-700 focus:outline-none"
                 type="text"
                 placeholder="Coloque sua url aqui"
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
             />
             
             <button
@@ -20,6 +52,7 @@ export function HomePage() {
                 Gerar Qrcode
                 
             </button>
+
         </div>
     );
 }
