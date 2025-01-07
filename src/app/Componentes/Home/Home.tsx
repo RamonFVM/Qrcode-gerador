@@ -1,5 +1,5 @@
-import axios from "axios";
 'use client'
+import axios from "axios";
 import { useState } from "react";
 
 
@@ -9,26 +9,18 @@ export function HomePage() {
     const [value,setValue]=useState<string>("")
 
     const Geradorqrcode=async()=>{
-
         try {
 
             if(value){
-
+                
                 const Qrcodedata= await axios.get(`http://localhost:4000/qrcode/generater?data=${value}`)
-
                 if(Qrcodedata.data){
 
                     setValue(Qrcodedata.data)
-
                 }
-               
-
             }
-            
         } catch (error) {
-
             console.error("Error ao gerar o qrcode", error)
-            
         }
 
 
@@ -40,9 +32,9 @@ export function HomePage() {
             <input
                 className="border min-w-96 rounded-xl m-6 p-4 placeholder-gray-700 focus:outline-none"
                 type="text"
-                placeholder="Coloque sua url aqui"
+                placeholder="Coloque sua url aqui ou texto"
                 value={value}
-                onChange={(e) => setValue(e.target.value)}
+                onChange={(e) => setValue(e.target.value.toLocaleLowerCase())}
             />
             
             <button
